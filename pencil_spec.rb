@@ -2,18 +2,18 @@ require "pencil"
 
 describe Pencil do
 
-  describe "#defaultLength" do
+  describe "#default_length" do
     it "Created with default length" do
       default_length = 5
-      length = Pencil.new.defaultLength(default_length)
+      length = Pencil.new.default_length(default_length)
       expect(length).to eq(5)
     end
   end
 
-  describe "#defaultDurability" do
+  describe "#default_durability" do
     it "Created with default durability" do
       default_durability = 10
-      durability = Pencil.new.defaultDurability(default_durability)
+      durability = Pencil.new.default_durability(default_durability)
       expect(durability).to eq(10)
     end
   end
@@ -26,7 +26,7 @@ describe Pencil do
     end
   end
 
-  describe "#eraseOne" do
+  describe "#erase_one" do
     it "Erases the last instance of a given word from a string" do
       phrase = "bubble gum bubble gum in a dish how many pieces do you wish"
       erase_word = "bubble"
@@ -35,7 +35,7 @@ describe Pencil do
     end
   end
 
-  describe "#eraseTwo" do
+  describe "#erase_two" do
     it "Erases the last instance of a given word from a string" do
       phrase = "bubble gum bubblegum in a dish how many pieces do you wish"
       erase_word = "bubble"
@@ -44,7 +44,7 @@ describe Pencil do
     end
   end
 
-  describe "#eraseThree" do
+  describe "#erase_three" do
     it "Erases the last instance of a given word from a string" do
       phrase = "bubble gumbubble gum in a dish how many pieces do you wish"
       erase_word = "bubble"
@@ -53,7 +53,7 @@ describe Pencil do
     end
   end
 
-  describe "#sharpenOne" do
+  describe "#sharpen_one" do
     it "Returns all durability and reduces length by one" do
       current_durability = 0
       default_durability = 10
@@ -64,7 +64,7 @@ describe Pencil do
     end
   end
 
-  describe "#sharpenTwo" do
+  describe "#sharpen_two" do
     it "Returns length and durability of pencil that cannot be sharpened" do
       current_durability = 5
       default_durability = 10
@@ -78,12 +78,12 @@ describe Pencil do
   describe "#eraser" do
     it "Created with default eraser durability" do
       default_eraser_durability = 5
-      eraser_durability = Pencil.new.eraserDurability(default_eraser_durability)
+      eraser_durability = Pencil.new.eraser_durability(default_eraser_durability)
       expect(eraser_durability).to eq(5)
     end
   end
 
-  describe "#durabilityLossOne" do
+  describe "#durability_loss_one" do
     it "Pencil loses durability as it writes" do
       durability = 5
       text = "fun"
@@ -92,7 +92,7 @@ describe Pencil do
     end
   end
 
-  describe "#durabilityLossTwo" do
+  describe "#durability_loss_two" do
     it "Pencil loses durability as it writes" do
       durability = 5
       text = "this is long text"

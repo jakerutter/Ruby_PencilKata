@@ -6,27 +6,17 @@ class Pencil
     @durability = durability
   end
 
-  def defaultLength(length)
+  def default_length(length)
     length = length
     length
   end
 
-  def defaultDurability(durability)
+  def default_durability(durability)
     durability = durability
     durability
   end
 
-  def length
-    length = length
-    length
-  end
-
-  def durability(durability)
-    durability = durability
-    durability
-  end
-
-  def eraserDurability(eraser_durability)
+  def eraser_durability(eraser_durability)
     eraser_durability = eraser_durability
     eraser_durability
   end
