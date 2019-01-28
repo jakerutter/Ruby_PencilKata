@@ -101,4 +101,13 @@ describe Pencil do
     end
   end
 
+
+  describe "write" do
+    it "Pencil writes spaces after it runs out of durability" do
+      durability = 5
+      text = "this is long text"
+      pencil = Pencil.new(5)
+      expect(pencil.write(text, "")).to eq("this             ")
+    end
+  end
 end
