@@ -6,21 +6,25 @@ class Pencil
     @durability = durability
   end
 
+# Does this really give it a default length though?  This method seems superfluous
   def default_length(length)
     length = length
     length
   end
 
+#Same as above
   def default_durability(durability)
     durability = durability
     durability
   end
 
+# Same as above
   def eraser_durability(eraser_durability)
     eraser_durability = eraser_durability
     eraser_durability
   end
 
+#All writes should go through this method
   def write(text, paper)
     paper = text
     paper
@@ -44,6 +48,7 @@ class Pencil
     return length, durability
 end
 
+#Should be able to refactor this method to be write(paper,text) and use @durability as a property instead of passing it in
   def write_text_reduce_pencil_durability(durability, text)
     if text.length <= durability
       write(text, "")
