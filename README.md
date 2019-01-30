@@ -1,4 +1,4 @@
-# Running tests
+# Running Tests
 
 `gem install bundler`
 `bundle install`
