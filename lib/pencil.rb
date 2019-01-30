@@ -5,7 +5,7 @@ class Pencil
     @durability = durability
   end
 
-  attr_accessor :length, :durability
+  attr_reader :length, :durability
 
 #All writes should go through this method
   def write(text, paper)
@@ -30,14 +30,19 @@ class Pencil
   end
 
   def sharpen(current_durability)
-    length = @length
-    durability = @durability
-    if length > 0
-      length -= 1
+    #can use @vars directly inside the class
+    if @length > 0
+      @length -= 1
     else
-      durability = current_durability
+      @durability = current_durability
+    end
   end
-    return length, durability
-end
 
+#encapsulation
+  def length
+    @length
+  end
+  def durability
+    @durability
+  end
 end
