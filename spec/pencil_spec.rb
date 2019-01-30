@@ -40,21 +40,23 @@ describe Pencil do
     end
   end
 
-  describe "#sharpen_one" do
+  describe "#sharpen" do
     it "Returns all durability and reduces length by one" do
       current_durability = 0
-      length, durability = Pencil.new(3,10).sharpen(current_durability)
-      expect(length).to eq(2)
-      expect(durability).to eq(10)
+      ##Should you trust your caller to specify what the pencils current durability is?  I feel like they could use this improperly, sharpen shoudl take no parameters
+      pencil = Pencil.new(3,10)
+      pencil.sharpen(current_durability)
+      #encapsulation
+      expect(pencil.length).to eq(2)
+      expect(pencil.durability).to eq(10)
     end
-  end
 
-  describe "#sharpen_two" do
     it "Returns length and durability of pencil that cannot be sharpened" do
       current_durability = 5
-      length, durability = Pencil.new(0,5).sharpen(current_durability)
-      expect(length).to eq(0)
-      expect(durability).to eq(5)
+      pencil = Pencil.new(0,5)
+      pencil.sharpen(current_durability)
+      expect(pencil.length).to eq(0)
+      expect(pencil.durability).to eq(5)
     end
   end
 
