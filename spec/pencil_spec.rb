@@ -16,30 +16,6 @@ describe Pencil do
     end
   end
 
-  describe "#erase_one" do
-    it "Erases the last instance of a given word from a string" do
-      paper = "bubble gum bubble gum in a dish how many pieces do you wish"
-      erase_word = "bubble"
-      expect(Pencil.new(5,5,5).erase(paper, erase_word)).to eq("bubble gum gum in a dish how many pieces do you wish")
-    end
-  end
-
-  describe "#erase_two" do
-    it "Erases the last instance of a given word from a string" do
-      paper = "bubble gum bubblegum in a dish how many pieces do you wish"
-      erase_word = "bubble"
-      expect(Pencil.new(5,5,5).erase(paper, erase_word)).to eq("bubble gum gum in a dish how many pieces do you wish")
-    end
-  end
-
-  describe "#erase_three" do
-    it "Erases the last instance of a given word from a string" do
-      paper = "bubble gumbubble gum in a dish how many pieces do you wish"
-      erase_word = "bubble"
-      expect(Pencil.new(5,5,5).erase(paper, erase_word)).to eq("bubble gum gum in a dish how many pieces do you wish")
-    end
-  end
-
   describe "#sharpen" do
     it "Returns all graphite durability and reduces length by one" do
       pencil = Pencil.new(3,10,5)
@@ -55,5 +31,29 @@ describe Pencil do
       expect(pencil.graphite_durability).to eq(5)
     end
   end
+
+  describe "#erase" do
+    it "Erases the last instance of a given word from a string" do
+      pencil = Pencil.new(5,5,10)
+      paper = "bubble gum bubble gum in a dish how many pieces do you wish"
+      erase_word = "pieces"
+      expect(pencil.erase(paper, erase_word)).to eq("bubble gum bubble gum in a dish how many do you wish")
+    end
+
+    it "Erases the last instance of a given word from a string" do
+      pencil = Pencil.new(5,5,10)
+      paper = "there were two kittens playing on the couch"
+      erase_word = "two kittens"
+      expect(pencil.erase(paper, erase_word)).to eq("there were playing on the couch")
+    end
+
+    it "Eraser lacks durability to erase all of a word" do
+      pencil = Pencil.new(5,5,5)
+      paper = "two score and seven years ago"
+      erase_word = "seven years ago"
+      expect(Pencil.new(5,5,5).erase(paper, erase_word)).to eq("two score and ")
+    end
+  end
+
 
 end
