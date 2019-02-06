@@ -37,21 +37,40 @@ describe Pencil do
       pencil = Pencil.new(5,5,10)
       paper = "bubble gum bubble gum in a dish how many pieces do you wish"
       erase_word = "pieces"
-      expect(pencil.erase(paper, erase_word)).to eq("bubble gum bubble gum in a dish how many do you wish")
+      expect(pencil.erase(paper, erase_word)).to eq("bubble gum bubble gum in a dish how many        do you wish")
+      expect(pencil.eraser_durability).to eq(4)
     end
 
     it "Erases the last instance of a given word from a string" do
-      pencil = Pencil.new(5,5,10)
+      pencil = Pencil.new(5,5,12)
       paper = "there were two kittens playing on the couch"
       erase_word = "two kittens"
-      expect(pencil.erase(paper, erase_word)).to eq("there were playing on the couch")
+      expect(pencil.erase(paper, erase_word)).to eq("there were             playing on the couch")
+      expect(pencil.eraser_durability).to eq(2)
     end
 
-    it "Eraser lacks durability to erase all of a word" do
-      pencil = Pencil.new(5,5,5)
+    it "Eraser lacks durability to erase all of a phrase from a string" do
+      pencil = Pencil.new(10,10,2)
       paper = "two score and seven years ago"
       erase_word = "seven years ago"
-      expect(Pencil.new(5,5,5).erase(paper, erase_word)).to eq("two score and ")
+      expect(pencil.erase(paper, erase_word)).to eq("two score and seven years a  ")
+      expect(pencil.eraser_durability).to eq(0)
+    end
+
+    it "Eraser degredates by one when erasing lowercase letters" do
+      pencil = Pencil.new(4,4,4)
+      paper = "i love you"
+      erase_word = "i"
+      expect(pencil.erase(paper, erase_word)).to eq("  love you")
+      expect(pencil.eraser_durability).to eq(3)
+    end
+
+    it "Eraser degredates by two when erasing uppercase letters" do
+      pencil = Pencil.new(4,4,4)
+      paper = "I love you"
+      erase_word = "I"
+      expect(pencil.erase(paper, erase_word)).to eq("  love you")
+      expect(pencil.eraser_durability).to eq(2)
     end
   end
 

@@ -26,9 +26,30 @@ class Pencil
 
   def erase(paper, erase_word)
     index = paper.rindex(erase_word)
-    a, b = paper.slice!(index, erase_word.length), paper
-    b = b.gsub(/\s+/, ' ')
-    paper = b
+    currentIndex = index + erase_word.length - 1
+    paper_array = paper.split("")
+    char = paper_array[currentIndex]
+    while currentIndex >= index do
+      if @eraser_durability > 1
+        if char != " " && char == char.downcase
+          @eraser_durability -= 1
+          paper_array[currentIndex] = " "
+        elsif char != " " && char != char.downcase
+          @eraser_durability -= 2
+          paper_array[currentIndex] = " "
+        end
+      elsif @eraser_durability == 1
+        if char != " " && char = char.downcase
+          @eraser_durability -= 1
+          paper_array[currentIndex] = " "
+        end
+      end
+
+      currentIndex -= 1
+      char = paper_array[currentIndex]
+
+    end
+    paper = paper_array.join()
     paper
   end
 
@@ -50,5 +71,5 @@ class Pencil
   def eraser_durability
     @eraser_durability
   end
-  
+
 end
