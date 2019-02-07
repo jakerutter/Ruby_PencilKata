@@ -30,14 +30,14 @@ class Pencil
     char = paper_array[currentIndex]
     while currentIndex >= index do
       if @eraser_durability > 1
-        if char != " " && char == char.downcase
+        if char_cost(char) == 1
           @eraser_durability -= 1
-        elsif char != " " && char != char.downcase
+        elsif char_cost(char) == 2
           @eraser_durability -= 2
         end
         paper_array[currentIndex] = " "
       elsif @eraser_durability == 1
-        if char != " " && char = char.downcase
+        if char_cost(char) == 1
           @eraser_durability -= 1
           paper_array[currentIndex] = " "
         end
@@ -49,6 +49,18 @@ class Pencil
 
     paper = paper_array.join()
     paper
+  end
+
+  def char_cost(char)
+    cost = 0
+    if char == " "
+      cost = 0
+    elsif char == char.downcase
+      cost = 1
+    else
+      cost = 2
+    end
+    cost
   end
 
   def sharpen()
