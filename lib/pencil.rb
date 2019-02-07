@@ -22,45 +22,42 @@ class Pencil
     paper = text
     paper
   end
+  
+    def erase(paper, erase_word)
+      index = paper.rindex(erase_word)
+      currentIndex = index + erase_word.length - 1
+      paper_array = paper.split("")
 
-  def erase(paper, erase_word)
-    index = paper.rindex(erase_word)
-    currentIndex = index + erase_word.length - 1
-    paper_array = paper.split("")
-    char = paper_array[currentIndex]
-    while currentIndex >= index do
-      if @eraser_durability > 1
-        if char_cost(char) == 1
-          @eraser_durability -= 1
-        elsif char_cost(char) == 2
-          @eraser_durability -= 2
-        end
-        paper_array[currentIndex] = " "
-      elsif @eraser_durability == 1
-        if char_cost(char) == 1
-          @eraser_durability -= 1
-          paper_array[currentIndex] = " "
+      while currentIndex >= index do
+        erase_char(paper_array, currentIndex)
+        currentIndex -= 1
+
+        if @eraser_durability == 0
+          break
         end
       end
 
-      currentIndex -= 1
-      char = paper_array[currentIndex]
+      paper = paper_array.join()
+      paper
     end
-
-    paper = paper_array.join()
-    paper
-  end
 
   def char_cost(char)
     cost = 0
     if char == " "
-      cost = 0
+      cost = cost
     elsif char == char.downcase
       cost = 1
     else
       cost = 2
     end
     cost
+  end
+
+  def erase_char(paper_array, currentIndex)
+    cost = char_cost(paper_array[currentIndex])
+    paper_array[currentIndex] = " "
+    @eraser_durability -= cost
+    paper_array
   end
 
   def sharpen()
