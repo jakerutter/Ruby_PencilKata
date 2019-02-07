@@ -10,7 +10,6 @@ class Pencil
 
   attr_reader :length, :graphite_durability, :eraser_durability
 
-#All writes should go through this method
   def write(text, paper)
     graphite_durability = @graphite_durability
     if text.length <= graphite_durability
@@ -33,10 +32,8 @@ class Pencil
       if @eraser_durability > 1
         if char != " " && char == char.downcase
           @eraser_durability -= 1
-          # paper_array[currentIndex] = " "
         elsif char != " " && char != char.downcase
           @eraser_durability -= 2
-          # paper_array[currentIndex] = " "
         end
         paper_array[currentIndex] = " "
       elsif @eraser_durability == 1
@@ -48,8 +45,8 @@ class Pencil
 
       currentIndex -= 1
       char = paper_array[currentIndex]
-
     end
+
     paper = paper_array.join()
     paper
   end
