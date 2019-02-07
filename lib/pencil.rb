@@ -33,11 +33,12 @@ class Pencil
       if @eraser_durability > 1
         if char != " " && char == char.downcase
           @eraser_durability -= 1
-          paper_array[currentIndex] = " "
+          # paper_array[currentIndex] = " "
         elsif char != " " && char != char.downcase
           @eraser_durability -= 2
-          paper_array[currentIndex] = " "
+          # paper_array[currentIndex] = " "
         end
+        paper_array[currentIndex] = " "
       elsif @eraser_durability == 1
         if char != " " && char = char.downcase
           @eraser_durability -= 1
