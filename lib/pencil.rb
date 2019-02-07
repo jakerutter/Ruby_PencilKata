@@ -22,7 +22,7 @@ class Pencil
     paper = text
     paper
   end
-  
+
     def erase(paper, erase_word)
       index = paper.rindex(erase_word)
       currentIndex = index + erase_word.length - 1
@@ -32,7 +32,7 @@ class Pencil
         erase_char(paper_array, currentIndex)
         currentIndex -= 1
 
-        if @eraser_durability == 0
+        if @eraser_durability < char_cost(paper_array[currentIndex])
           break
         end
       end

@@ -57,6 +57,14 @@ describe Pencil do
       expect(pencil.eraser_durability).to eq(0)
     end
 
+    it "Eraser lacks durability to erase all of a phrase from a string" do
+      pencil = Pencil.new(10,10,3)
+      paper = "IM SO MAD"
+      erase_word = "SO MAD"
+      expect(pencil.erase(paper, erase_word)).to eq("IM SO MA ")
+      expect(pencil.eraser_durability).to eq(1)
+    end
+
     it "Eraser degredates by one when erasing lowercase letters" do
       pencil = Pencil.new(4,4,4)
       paper = "i love you"
